@@ -38,6 +38,10 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/login', (req, res) => {
+    res.render('login');
+});
+
     // res.render('homepage', {
     //     id: 1, 
     //     post_url: 'https://handebarsjs.com/guide/',
