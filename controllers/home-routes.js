@@ -27,9 +27,10 @@ router.get('/', (req, res) => {
         ]
     })
         .then(dbPostData => {
-            console.log(dbPostData[0]);
+            console.log(dbPostData);
+            const posts = dbPostData.map(post => post.get({ plain: true }));
             // pass a single post object into the homepage template
-            res.render('homepage', dbPostData[0]);
+            res.render('homepage', { posts });
         })
         .catch(err => {
             console.log(err);
@@ -37,17 +38,17 @@ router.get('/', (req, res) => {
         });
 });
 
-//     res.render('homepage', {
-//         id: 1, 
-//         post_url: 'https://handebarsjs.com/guide/',
-//         title: 'Handlebars Docs',
-//         created_at: new Date(),
-//         vote_count: 10,
-//         comments: [{}, {}],
-//         user: {
-//             username: 'test_user'
-//         }
-//     });
-// });
+    // res.render('homepage', {
+    //     id: 1, 
+    //     post_url: 'https://handebarsjs.com/guide/',
+    //     title: 'Handlebars Docs',
+    //     created_at: new Date(),
+    //     vote_count: 10,
+    //     comments: [{}, {}],
+    //     user: {
+    //         username: 'test_user'
+    //     }
+    // });
+
 
 module.exports = router;
